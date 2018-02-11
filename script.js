@@ -1,17 +1,18 @@
-var movie = React.createClass({
+var Movie = React.createClass({
     propTypes: {
-        id: React.PropTypes.object.isRequired,
+        movie: React.PropTypes.object.isRequired,
     },
     render: function () {
         return (
-            React.createElement('h2', {}, movie.title),
-                React.createElement('p', {}, movie.desc),
-            React.createElement('img', {src: movie.poster})
-    )
-    }
+            React.createElement('li', {key: this.props.movie.id},
+                React.createElement('h2', {}, this.props.movie.title),
+                React.createElement('p', {}, this.props.movie.desc),
+                React.createElement('img', {src: this.props.movie.poster})
+            )
+        )
+    },
 });
 
-var img = new Image;
 
 var movies = [
     {
@@ -40,10 +41,7 @@ var movies = [
     }
 ];
 var moviesElements = movies.map(function (movie) {
-    return React.createElement('li', {key: movie.id},
-        React.createElement('h2', {}, movie.title),
-        React.createElement('p', {}, movie.desc)),
-        React.createElement('img', {src: movie.poster});
+    return React.createElement(Movie, {movie: movie});
 });
 var element =
     React.createElement('div', {},
