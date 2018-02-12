@@ -10,7 +10,7 @@ var MovieTitle = React.createClass({ //creats of react's class which has attribu
 });
 var MovieDescription = React.createClass({
     propTypes: {
-        movieDescription: React.PropTypes.string.isRequired,
+        movieDescription: React.PropTypes.string,
     },
     render: function () {
         return (
@@ -72,7 +72,7 @@ var movies = [
     }
 ];
 var moviesElements = movies.map(function (movie) {
-    return React.createElement(Movie, {movie: movie});
+    return React.createElement(Movie, {movie: movie, key: movie.id});
 });
 var element =
     React.createElement('div', {},
